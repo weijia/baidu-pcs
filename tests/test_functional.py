@@ -2,7 +2,7 @@
 ''' Functional test with real ACCESS_TOKEN and APP_FOLDER.
 '''
 import unittest
-import baidu.pcs
+import baidu_pcs.baidu_pcs
 import os
 import hashlib
 import tempfile
@@ -36,7 +36,7 @@ class TestEnv(unittest.TestCase):
 class TestDelete(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
         self.test_file = os.path.join(os.path.dirname(__file__),
                                       'res',
                                       'abc.txt')
@@ -60,7 +60,7 @@ class TestDelete(unittest.TestCase):
 class TestInfoAPI(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
 
     def test_info(self):
         code, r = self.yun.info()
@@ -73,7 +73,7 @@ class TestInfoAPI(unittest.TestCase):
 class TestUploadAPI(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
         self.test_file = os.path.join(os.path.dirname(__file__),
                                       'res',
                                       '1.jpg')
@@ -154,7 +154,7 @@ class TestUploadAPI(unittest.TestCase):
 class TestMeta(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
         self.abc_file = os.path.join(os.path.dirname(__file__),
                                      'res',
                                      'abc.txt')
@@ -193,7 +193,7 @@ class TestMeta(unittest.TestCase):
 class TestReadContent(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
         self.abc_file = os.path.join(os.path.dirname(__file__),
                                      'res',
                                      'abc.txt')
@@ -245,7 +245,7 @@ class TestReadContent(unittest.TestCase):
 class TestMkdir(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
         self.path = os.environ['APP_FOLDER'] + \
             '/' + tmpname('tmp')
         self.abc_file = os.path.join(os.path.dirname(__file__),
@@ -264,7 +264,7 @@ class TestMkdir(unittest.TestCase):
 class TestList(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
         self.path = os.environ['APP_FOLDER'] + \
             '/' + tmpname('tmp_')
         self.yun.mkdir(path=self.path)
@@ -292,7 +292,7 @@ class TestList(unittest.TestCase):
 class TestMoveSingle(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
         self.from_path = os.environ['APP_FOLDER'] + '/' + tmpname('from')
         self.to_path = os.environ['APP_FOLDER'] + '/' + tmpname('to')
         self.yun.mkdir(path=self.from_path)
@@ -311,7 +311,7 @@ class TestMoveSingle(unittest.TestCase):
 class TestMoveCopy(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
         self.from_path = os.environ['APP_FOLDER'] + '/' + tmpname('from')
         self.to_path = os.environ['APP_FOLDER'] + '/' + tmpname('to')
         self.new_path = os.environ['APP_FOLDER'] + '/' + tmpname('n')
@@ -352,7 +352,7 @@ class TestMoveCopy(unittest.TestCase):
 class TestSearch(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
         self.test_file = os.path.join(os.path.dirname(__file__),
                                       'res',
                                       'abc.txt')
@@ -374,7 +374,7 @@ class TestSearch(unittest.TestCase):
 class TestThumbnail(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
         self.img_file = os.path.join(os.path.dirname(__file__),
                                      'res',
                                      '1.jpg')
@@ -395,7 +395,7 @@ class TestThumbnail(unittest.TestCase):
 class TestNoSetup(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
 
     def tearDown(self):
         pass
@@ -447,7 +447,7 @@ class TestNoSetup(unittest.TestCase):
 class TestStreaming(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
         self.video_file = os.path.join(os.path.dirname(__file__),
                                        'res',
                                        'clipcanvas_14348_H264_640x360.mp4')
@@ -486,7 +486,7 @@ class TestStreaming(unittest.TestCase):
 class TestRapidUpload(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
         self.video_file = os.path.join(os.path.dirname(__file__),
                                        'res',
                                        'clipcanvas_14348_H264_640x360.mp4')
@@ -511,7 +511,7 @@ class TestRapidUpload(unittest.TestCase):
 class TestAddCancelTask(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
         self.url = 'http://www.w3.org/2013/Talks/0528-dsr-html5.pdf'
         self.path = os.environ['APP_FOLDER'] + '/' + tmpname('tmp_add_') + '.pdf'
 
@@ -541,7 +541,7 @@ class TestAddCancelTask(unittest.TestCase):
 class TestTask(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
         self.urls = [
             'http://tools.ietf.org/pdf/rfc1945.pdf',
             'http://tools.ietf.org/pdf/rfc2616.pdf',
@@ -608,7 +608,7 @@ class TestTask(unittest.TestCase):
 class TestRecycle(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
 
     def test_list_recycle(self):
         c, r = self.yun.list_recycle()
@@ -623,7 +623,7 @@ class TestRecycle(unittest.TestCase):
 class TestRestoreRecycle(unittest.TestCase):
 
     def setUp(self):
-        self.yun = baidu.pcs.Client(os.environ['ACCESS_TOKEN'])
+        self.yun = baidu_pcs.baidu_pcs.Client(os.environ['ACCESS_TOKEN'])
         self.test_file = os.path.join(os.path.dirname(__file__),
                                       'res',
                                       'abc.txt')
